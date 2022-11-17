@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String mesaj= "Bugün hava çok güzel.";
+        String mesaj= "  Bugün hava çok güzel.  ";
         System.out.println(mesaj);
         System.out.println("Eleman sayısı :" + mesaj.length());
         System.out.println("5. Elemanı :" + mesaj.charAt(4));
@@ -8,10 +8,18 @@ public class Main {
         System.out.println(mesaj.startsWith("B")); // B ile başlıyorsa true, başlamıyorsa false çevirir.
         System.out.println(mesaj.endsWith("."));   // . ile bitiyorsa true bitmiyorsa false çevirir.
         char [] karakter = new char[5];
-        mesaj.getChars(0,5,karakter,0); // 0. indisten itibaren 0-5 arasındaki endisleri çağırıyor.
+        mesaj.getChars(0,5,karakter,0); // 0. indisten itibaren 0-5 arasındaki indisleri çağırıyor.
         System.out.println(karakter);
         System.out.println(mesaj.indexOf("av")); // soldan itibaren av ile biten ilk index kaçsa onu yazıyor.
         System.out.println(mesaj.lastIndexOf("a")); // sağdan itibaren bulduğu ilk a'nın index numarasını yazıyor.
-        
+        String yeniMesaj=mesaj.replace(' ', '-'); // mesajdaki boşluklar yerine - yazdı.
+        System.out.println(yeniMesaj);
+        System.out.println(mesaj.substring(2,5));//2. index ile 5. index arasındaki 5 dahil değil yazıyor.
+        for(String kelime:mesaj.split(" ")) {
+            System.out.println(kelime); // Mesajı boşluktan itibaren bölüyor yani kelimeleri buluyor. Her kelimeyi diziye atıyor for döngüsü ile de bu diziyi çeviriyor. Yani kelimeleri alt alta yazıyor.
+        }
+        System.out.println(mesaj.toLowerCase());// Mesajın hepsini küçük harfle yazıyor.
+        System.out.println(mesaj.toUpperCase());// Mesajın hepsini büyük harfle yazıyor.
+        System.out.println(mesaj.trim()); //Mesajın başında ve sonunda boşluk varsa onları kesiyor.
+        }
     }
-}
