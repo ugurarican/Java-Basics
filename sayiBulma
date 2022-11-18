@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] sayilar = new int[]{1, 2, 5, 7, 9, 0};
+        int aranacak = 3;
+        boolean varMi= false;
+        for (int sayi:sayilar) {
+            if (aranacak == sayi) {
+                varMi = true;
+            }
+        }
+        if(varMi){
+            System.out.println(aranacak + " Sayısı bu dizide yer almaktadır.");
+        }
+        else System.out.println(aranacak + " Sayısı bu dizide yer almamaktadır.");
+    }
+}
