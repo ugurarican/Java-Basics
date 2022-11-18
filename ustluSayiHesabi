@@ -1,0 +1,15 @@
+public class Main {
+    public static void main(String[] args) {
+        int taban=2, üst=3;
+        int sonuc=1;
+        if(taban>=0){
+            for(int i=1; i<=üst; i++){
+                sonuc=taban*sonuc;
+            }
+        }
+        else {
+            System.out.println("Hatalı sayı girdiniz.");
+        }
+        System.out.println("Sonuç :"+sonuc);
+    }
+}
