@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        char harf = 'S';
+        switch (harf){
+            case 'A','I','O','U':{
+                System.out.println(harf+" kalın sesli harftir.");
+            break;
+            }
+            case 'E','İ','Ö','Ü':{
+                System.out.println(harf+" ince sesli harftir.");
+                break;
+            }
+            default: System.out.println("Geçersiz veri girdiniz.");
+        }
+    }
+}
