@@ -1,0 +1,41 @@
+class VehicleProrerties {
+    private int age;
+    private String marka;
+    private String model;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getMarka() {
+        return marka;
+    }
+
+    public void setMarka(String marka) {
+        this.marka = marka;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        VehicleProrerties vehicleProrerties = new VehicleProrerties();
+        vehicleProrerties.setAge(2);
+        vehicleProrerties.setMarka("Audi");
+        vehicleProrerties.setModel("A3");
+        System.out.println("Araç markası :"+vehicleProrerties.getMarka());
+        System.out.println("Araç modeli :"+vehicleProrerties.getModel());
+        System.out.println("Araç yaşı :"+vehicleProrerties.getAge());
+    }
+}
