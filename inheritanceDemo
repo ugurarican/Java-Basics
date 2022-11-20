@@ -1,0 +1,27 @@
+public class BaseKrediManager {
+    public void Hesapla() {
+        System.out.println("Kredi hesaplandı.");
+    }
+}
+
+public class OgretmenKrediManager {
+}
+
+public class TarimKrediManager {
+}
+
+public class AskerKrediManager {
+}
+
+public class KrediUI {
+    public void KrediHesapla(BaseKrediManager baseKrediManager) {
+        baseKrediManager.Hesapla();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        KrediUI krediUI = new KrediUI();
+        krediUI.KrediHesapla(new BaseKrediManager());
+    }
+}
