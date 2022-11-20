@@ -1,0 +1,40 @@
+public class Employee extends Person{
+    double salary;
+}
+public class Costumer extends Person{
+    String email;
+}
+public class Person {
+    int id;
+    int age;
+    String firstName;
+    String lastName;
+}
+public class CostumerManager extends PersonManager{
+}
+public class EmployeeManager extends PersonManager{
+    public void bestEmployee(){
+        System.out.println("Ayın elemanı getirildi.");
+    }
+}
+public class PersonManager {
+    public void list(){
+        System.out.println("Listelendi.");
+    }
+    public void add(){
+        System.out.println("Eklendi.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Costumer costumer = new Costumer();
+        Employee employee = new Employee();
+        CostumerManager costumerManager = new CostumerManager();
+        EmployeeManager employeeManager = new EmployeeManager();
+        String email = costumer.email;
+        String firsName = employee.firstName;
+        costumerManager.add();
+        employeeManager.bestEmployee();
+    }
+}
