@@ -1,0 +1,36 @@
+abstract class GameCalculator {
+    public abstract void hesapla();
+
+    public final void gameOver() {
+        System.out.println("Oyun bitti.");
+    }
+}
+    class ManGameCaltulator extends GameCalculator{
+
+        @Override
+        public void hesapla() {
+            System.out.println("Puanınız :90");
+        }
+    }
+class WomanGameCaltulator extends GameCalculator{
+
+    @Override
+    public void hesapla() {
+        System.out.println("Puanınız :95");
+    }
+}
+class KidsGameCaltulator extends GameCalculator{
+
+    @Override
+    public void hesapla() {
+        System.out.println("Puanınız :100");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GameCalculator gameCalculator = new KidsGameCaltulator();
+        gameCalculator.hesapla();
+        gameCalculator.gameOver();
+    }
+}
