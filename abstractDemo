@@ -1,0 +1,32 @@
+abstract class BaseDatabaseManager {
+    abstract public void getData();
+}
+
+class OracleDatabaseManager extends BaseDatabaseManager{
+
+    @Override
+    public void getData() {
+        System.out.println("Veri getirildi : Oracle");
+    }
+}
+
+class SqlServerDatabaseManager extends BaseDatabaseManager{
+
+    @Override
+    public void getData() {
+        System.out.println("Veri getirildi : Sql Server");
+    }
+}
+class CustomerManager{
+    BaseDatabaseManager databaseManager;
+    public void getCustomers(){
+        databaseManager.getData();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        CustomerManager customerManager = new CustomerManager();
+        customerManager.databaseManager = new SqlServerDatabaseManager();
+        customerManager.getCustomers();
+    }
+}
