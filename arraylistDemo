@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList sayilar = new ArrayList();
+        sayilar.add(1);
+        sayilar.add(10);
+        sayilar.add("Ankara");
+        System.out.println("Sayılar ArrayList boyutu: " + sayilar.size());
+        for (Object i : sayilar) {
+            System.out.println("Sayılar dizisinin elemanları: " + i);
+        }
+        System.out.println("Sayılar dizisinin 2. elemanı: " + sayilar.get(1));
+        sayilar.set(1, 100);
+        System.out.println("Sayılar dizisinin 2. elemanının yeni değeri: " + sayilar.get(1));
+        sayilar.remove(0);
+        System.out.println("Sayılar dizisinin 1. elemanının silindikten sonraki hali: ");
+        for (Object i : sayilar) {
+            System.out.println(i);
+        }
+        sayilar.clear();
+        for (Object i : sayilar) {
+            System.out.println("Sayılar dizisinin tüm elemanının silindikten sonraki hali: " + i);
+        }
+
+    }
+}
