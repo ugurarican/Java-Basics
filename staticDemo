@@ -23,6 +23,25 @@
     String name;
     double price;
 }
+public class DatabaseHelper {
+    public static class crud {
+        //Create read update delete
+        public static void delet() {
+            System.out.println("Silindi.");
+        }
+
+        public static void update() {
+            System.out.println("Güncellendi.");
+        }
+    }
+
+    public static class Connection {
+        public static void createConnection() {
+            System.out.println("Bağlantı oluşturuldu.");
+        }
+    }
+}
+
 
 public class Main {
     public static void main(String[] args) {
@@ -31,5 +50,8 @@ public class Main {
         product.name="Mouse";
         product.price=10;
         manager.add(product);
+        DatabaseHelper.crud.delet();
+        DatabaseHelper.crud.update();
+        DatabaseHelper.Connection.createConnection();
     }
 }
