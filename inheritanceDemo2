@@ -1,0 +1,39 @@
+interface IWorkable{
+    void work();}
+            
+            interface IEatable{
+        void eat();
+            }
+            interface IPayable{
+    void pay();
+}
+class Worker implements IWorkable,IPayable,IEatable{
+
+    @Override
+    public void work() {
+        
+    }
+
+    @Override
+    public void eat() {
+
+    }
+
+    @Override
+    public void pay() {
+
+    }
+}
+
+class OutsorceWorker implements IWorkable{
+
+    @Override
+    public void work() {
+        
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        
+    }
+}
