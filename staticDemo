@@ -1,0 +1,35 @@
+ class ProductValidator {
+    public static boolean isValed(Product product){
+        if (product.price>0 && !product.name.isEmpty()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+ class ProductManager {
+    public void add(Product product){
+        if(ProductValidator.isValed(product)){
+            System.out.println("Ürün veri tabanına eklendi.");
+        }
+        else{
+            System.out.println("Ürün bilgileri geçersiz.");
+        }
+    }
+}
+ class Product {
+    int id;
+    String name;
+    double price;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ProductManager manager = new ProductManager();
+        Product product = new Product();
+        product.name="Mouse";
+        product.price=10;
+        manager.add(product);
+    }
+}
