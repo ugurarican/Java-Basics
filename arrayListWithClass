@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+class Customer {
+    int id;
+    String firstName;
+    String lastName;
+
+    public Customer() {
+    }
+
+    public Customer(int id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        Customer silinecek = new Customer(3, "Ahmet", "Veli");
+        customers.add(new Customer(1, "Uğur", "Arıcan"));
+        customers.add(new Customer(2, "Sevda", "Kurt"));
+        customers.add(silinecek);
+        customers.remove(silinecek);
+        //customers.add(new Customer(3,"Ahmet","Veli"));
+        //customers.remove(2);
+        for (Customer customer : customers) {
+            System.out.println(customer.firstName);
+        }
+    }
+}
