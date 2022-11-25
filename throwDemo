@@ -1,3 +1,16 @@
+
+class BalanceInsufficentException extends Exception {
+    String message;
+
+    public BalanceInsufficentException(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+}
+
 class AcoundManager {
     private double balance;
 
@@ -5,11 +18,11 @@ class AcoundManager {
         balance = getBalance() + amount;
     }
 
-    public void withdraw(double amount) throws Exception {
+    public void withdraw(double amount) throws BalanceInsufficentException {
         if (getBalance() >= amount) {
             balance = getBalance() - amount;
         } else {
-            throw new Exception("Bakiye yetersiz.");
+            throw new BalanceInsufficentException("Bakiye yetersiz.");
         }
     }
 
