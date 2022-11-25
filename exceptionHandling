@@ -1,22 +1,26 @@
-import java.lang.reflect.Array;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Main {
-    public static void main(String[] args) {
-        int[] sayilar=new int[]{1,2,3};
-        try{
-            System.out.println(sayilar[5]);
-        }
-        /*catch (ArrayIndexOutOfBoundsException exception){
-            System.out.println(exception);
-        }*/
-        catch (StringIndexOutOfBoundsException exception){
-            System.out.println(exception);
-        }
-        catch (Exception exception){
-            System.out.println("Loglandı :"+exception);
-        }
-        finally {
-            System.out.println("Ben her türlü çalışırım.");
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader = null;
+        int total = 0;
+        try {
+            reader = new BufferedReader(new FileReader("D:\\javademos2\\readFileDemo\\src\\sayilar"));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                total += Integer.valueOf(line);
+            }
+            System.out.println("Toplam :" + total);
+        } /*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } */ finally {
+            try {
+                reader.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
