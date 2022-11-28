@@ -1,0 +1,61 @@
+
+interface IEntityRepository<T extends IEntity> {
+    void add(T entity);
+
+    void delete(T entity);
+
+    void update(T entity);
+}
+
+interface IEntity {
+}
+
+class Validator {
+}
+
+class ProductDal implements IEntityRepository<Product> {
+    @Override
+    public void add(Product entity) {
+
+    }
+
+    @Override
+    public void delete(Product entity) {
+
+    }
+
+    @Override
+    public void update(Product entity) {
+
+    }
+}
+
+class CustomerDal implements IEntityRepository<Costumer> {
+
+    @Override
+    public void add(Costumer entity) {
+
+    }
+
+    @Override
+    public void delete(Costumer entity) {
+
+    }
+
+    @Override
+    public void update(Costumer entity) {
+
+    }
+}
+
+class Product implements IEntity {
+}
+
+class Costumer implements IEntity {
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+    }
+}
