@@ -1,0 +1,44 @@
+class KronemetreThread implements Runnable {
+    private Thread thread;
+    private String threadName;
+
+    public KronemetreThread(String threadName) {
+        this.threadName = threadName;
+        System.out.println("Oluşturulor : " + threadName);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Çalıştırılıyor : " + threadName);
+        try {
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(threadName + " : " + i);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException exception) {
+            System.out.println("Kesildi : " + threadName);
+        }
+
+    }
+
+    public void start() {
+        System.out.println("Thread nesnesi oluşturuluyor");
+        if (thread == null) {
+            thread = new Thread(this, threadName);
+            thread.start();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        KronemetreThread thread1 = new KronemetreThread("thread1");
+
+        KronemetreThread thread2 = new KronemetreThread("thread2");
+
+        KronemetreThread thread3 = new KronemetreThread("thread3");
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
