@@ -1,21 +1,134 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+
+
+class DbHelper {
+    private String userName = "root";
+    private String password = "12345";
+    private String dbUrl = "jdbc:mysql://localhost:3306/world";
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(dbUrl, userName, password);
+    }
+
+    public void showErrorMessage(SQLException exception) {
+        System.out.println("Error : " + exception.getMessage());
+        System.out.println("Error code : " + exception.getErrorCode());
+    }
+
+}
+
+class Country {
+    private String code;
+    private String name;
+    private String continent;
+    private String region;
+
+    public Country(String code, String name, String continent, String region) {
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+    }
+}
 
 public class Main {
-    static String userName = "root";
-    static String password = "12345";
-    static String dbUrl = "jdbc:mysql://localhost:3306/world";
+    public static void selectDemo() throws SQLException {
 
-    public static void main(String[] args) throws SQLException {
         Connection connection = null;
+        DbHelper helper = new DbHelper();
+        Statement statement = null; //SQL cümleciği
+        ResultSet resultSet; //Sonuçlar topluluğu
         try {
-            connection = DriverManager.getConnection(dbUrl, userName, password);
-            System.out.println("Bağlantı oluşturuldu.");
+            connection = helper.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select Code,Name,Continent,Region from country"); //Çalıştır
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (resultSet.next()) {
+                countries.add(new Country( //resultSet'i nesnelere aktardık.
+                        resultSet.getString("Code"),
+                        resultSet.getString("Name"),
+                        resultSet.getString("Continent"),
+                        resultSet.getString("Region")));
+            }
+            System.out.println(countries.size());
         } catch (SQLException exception) {
-            System.out.println(exception);
+            helper.showErrorMessage(exception);
         } finally {
             connection.close();
         }
     }
+
+    public static void insertData() throws SQLException {
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null; //insert ifadelerde prepared statement kullanılır.
+        ResultSet resultSet;
+        try {
+            connection = helper.getConnection(); //1. adım connectionu aç
+            String sql = "insert into city (Name,CountryCode,District,Population) values (?,?,?,?)";
+            statement = connection.prepareStatement(sql); //2. adım sstatementı oluştur
+            statement.setString(1, "Düzce");
+            statement.setString(2, "TUR");
+            statement.setString(3, "Düzce");
+            statement.setInt(4, 70000);
+            int result = statement.executeUpdate(); // 3. adım executeUpdate'i çalıştır
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        } finally {
+            statement.close();
+            connection.close();
+        }
+    }
+
+    public static void updateData() throws SQLException {
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        try {
+            connection = helper.getConnection();
+            String sql = "update city set population =100000,district='Turkey' where id=?";
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, 4082);
+            int result = statement.executeUpdate();
+            System.out.println("Kayıt güncellendi");
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        } finally {
+            statement.close();
+            connection.close();
+        }
+    }
+
+    public static void deleteData() throws SQLException {
+
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        try {
+            connection = helper.getConnection();
+            String sql = "delete from city where id=?";
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, 4082);
+            int result = statement.executeUpdate();
+            System.out.println("Kayıt silindi");
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        } finally {
+            statement.close();
+            connection.close();
+        }
+    }
+
+    public static void main(String[] args) throws SQLException {
+        selectDemo();
+        insertData();
+        updateData();
+        deleteData();
+    }
+
+
 }
+
